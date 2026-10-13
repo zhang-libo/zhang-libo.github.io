@@ -2,17 +2,17 @@
 title: 张立博的博客
 SEOTitle: 张立博的博客 | Zhang.Libo Blog
 header-img: img/post-bg-desk.jpg
-email: zhagnlibo610@outlook.com
+email: zhanglibo610@gmail.com
 description: "Choose from the heart."
-keyword: "Blog, 张立博的博客, glasszhang, 张立博, java, linux, flutter"
-url: "https://glasszhang.github.io"          # your host, for absolute URL
+keyword: "Blog, 张立博的博客, zhang-libo, 张立博, java, linux, flutter"
+url: "https://zhang-libo.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/glasszhang/glasszhang.github.io.git" # you code repository
+github_repo: "https://github.com/zhang-libo/zhang-libo.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "Choose from the heart."
-sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: https://avatars.githubusercontent.com/u/21078156?v=4      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
@@ -20,7 +20,7 @@ sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's us
 RSS: false
 # weibo_username:     zhanglibo
 # zhihu_username:     zhanglibo610
-github_username:    glasszhang
+github_username:    zhang-libo
 #facebook_username:  zhanglibo
 jianshu_username:   06d068191419
 #twitter_username:   zhanglibo
@@ -64,9 +64,9 @@ gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: 0752c6b324d65fff6686                            #生成的clientID
   clientSecret: 028a17fe14c54fd6d06349d08ba3040abd88a9da    #生成的clientSecret
-  repo: glasszhang.github.io    #仓库名称
-  owner: glasszhang    #github用户名
-  admin: glasszhang
+  repo: zhang-libo.github.io    #仓库名称
+  owner: zhang-libo    #github用户名
+  admin: zhang-libo
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
@@ -78,7 +78,7 @@ ba_track_id: 5c3c9b0cca44d1ae1acda04aaab94dcc
 
 # Google Analytics
 # ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
-# ga_domain: glasszhang.github.io               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
+# ga_domain: zhang-libo.github.io               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
 
 
 
@@ -100,6 +100,6 @@ service-worker: true
 friends: [
     {
         title: "简书·张立博",
-        href: "http://www.jianshu.com/u/06d068191419"
+        href: "https://www.jianshu.com/u/06d068191419"
     }
 ]
