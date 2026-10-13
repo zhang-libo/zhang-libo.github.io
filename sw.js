@@ -2,7 +2,8 @@
  * sw.js
  * ===========================================================
  * Copyright 2016 @huxpro
- * Licensed under Apache 2.0 
+ * Licensed under Apache 2.0
+ * Modified by Zhang.Libo for zhang-libo.github.io
  * Register service worker.
  * ========================================================== */
 
@@ -10,9 +11,8 @@ const PRECACHE = 'precache-v1';
 const RUNTIME = 'runtime';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
-  "huangxuan.me",
-  "yanshuo.io",
-  "cdnjs.cloudflare.com"
+  "cdnjs.cloudflare.com",
+  "unpkg.com"
 ]
 
 

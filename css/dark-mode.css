@@ -1,0 +1,235 @@
+/* dark-mode.css — dark theme overrides
+ * Activated by [data-theme="dark"] on <html>, or auto-applied via prefers-color-scheme: dark
+ * when no manual override is stored in localStorage.
+ */
+
+:root {
+  --c-bg: #ffffff;
+  --c-bg-soft: #fafafa;
+  --c-bg-card: #ffffff;
+  --c-fg: #404040;
+  --c-fg-soft: #808080;
+  --c-fg-mute: #bfbfbf;
+  --c-border: #eeeeee;
+  --c-border-strong: #d6d6d6;
+  --c-brand: #0085A1;
+  --c-link: #337ab7;
+  --c-link-hover: #0085A1;
+  --c-code-bg: #f8f8f8;
+  --c-inline-code: #eb5757;
+  --c-blockquote: #808080;
+  --c-shadow: rgba(0, 0, 0, 0.08);
+  --c-overlay: rgba(255, 255, 255, 0.9);
+  --c-selection-bg: #0085A1;
+  --c-selection-fg: #ffffff;
+  --c-nav-bg: rgba(255, 255, 255, 0.9);
+  --c-nav-fg: #404040;
+  --c-head-mask: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] {
+  --c-bg: #1a1d21;
+  --c-bg-soft: #22262b;
+  --c-bg-card: #25292f;
+  --c-fg: #e3e5e8;
+  --c-fg-soft: #a0a4ab;
+  --c-fg-mute: #6a6f76;
+  --c-border: #2f3439;
+  --c-border-strong: #3a4046;
+  --c-brand: #4ec0c8;
+  --c-link: #6db3e0;
+  --c-link-hover: #4ec0c8;
+  --c-code-bg: #2a2e34;
+  --c-inline-code: #ff8a8a;
+  --c-blockquote: #a0a4ab;
+  --c-shadow: rgba(0, 0, 0, 0.4);
+  --c-overlay: rgba(26, 29, 33, 0.92);
+  --c-selection-bg: #4ec0c8;
+  --c-selection-fg: #1a1d21;
+  --c-nav-bg: rgba(26, 29, 33, 0.92);
+  --c-nav-fg: #e3e5e8;
+  --c-head-mask: rgba(0, 0, 0, 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --c-bg: #1a1d21;
+    --c-bg-soft: #22262b;
+    --c-bg-card: #25292f;
+    --c-fg: #e3e5e8;
+    --c-fg-soft: #a0a4ab;
+    --c-fg-mute: #6a6f76;
+    --c-border: #2f3439;
+    --c-border-strong: #3a4046;
+    --c-brand: #4ec0c8;
+    --c-link: #6db3e0;
+    --c-link-hover: #4ec0c8;
+    --c-code-bg: #2a2e34;
+    --c-inline-code: #ff8a8a;
+    --c-blockquote: #a0a4ab;
+    --c-shadow: rgba(0, 0, 0, 0.4);
+    --c-overlay: rgba(26, 29, 33, 0.92);
+    --c-selection-bg: #4ec0c8;
+    --c-selection-fg: #1a1d21;
+    --c-nav-bg: rgba(26, 29, 33, 0.92);
+    --c-nav-fg: #e3e5e8;
+    --c-head-mask: rgba(0, 0, 0, 0.55);
+  }
+}
+
+html, body {
+  background-color: var(--c-bg) !important;
+  color: var(--c-fg) !important;
+}
+
+/* Selection */
+::-moz-selection { background: var(--c-selection-bg); color: var(--c-selection-fg); }
+::selection { background: var(--c-selection-bg); color: var(--c-selection-fg); }
+
+/* Links */
+a, .post-container a, .post-content a, .post-preview a, footer a {
+  color: var(--c-link) !important;
+}
+a:hover, .post-container a:hover, .post-content a:hover, .post-preview a:hover, footer a:hover {
+  color: var(--c-link-hover) !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6, .post-title, .post-subtitle, .site-heading, .post-heading, .intro-header h1 {
+  color: var(--c-fg) !important;
+}
+
+/* Blockquote */
+blockquote {
+  color: var(--c-blockquote) !important;
+  border-left-color: var(--c-brand) !important;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background: var(--c-code-bg) !important;
+  color: var(--c-inline-code) !important;
+}
+.highlight, pre, .highlight pre {
+  background: var(--c-code-bg) !important;
+  color: var(--c-fg) !important;
+  border: 1px solid var(--c-border);
+}
+
+/* Tables */
+table, .table, .table th, .table td {
+  border-color: var(--c-border) !important;
+  background: transparent !important;
+  color: var(--c-fg) !important;
+}
+
+/* Horizontal rules */
+hr {
+  border-color: var(--c-border) !important;
+}
+
+/* Intro header (head image) — strengthen the dark mask in dark mode */
+[data-theme="dark"] .intro-header,
+html:not([data-theme="light"]) .intro-header {
+  background-color: var(--c-head-mask) !important;
+  background-blend-mode: multiply;
+}
+
+/* Navbar (after scroll) */
+.navbar-custom, .navbar-custom.is-fixed {
+  background-color: var(--c-nav-bg) !important;
+}
+.navbar-custom .nav li a, .navbar-custom .navbar-brand, .navbar-custom .icon-bar {
+  color: var(--c-nav-fg) !important;
+}
+
+/* Footer */
+footer, footer .container {
+  background-color: var(--c-bg-soft) !important;
+  color: var(--c-fg) !important;
+  border-top: 1px solid var(--c-border);
+}
+footer .copyright, footer .text-muted {
+  color: var(--c-fg-soft) !important;
+}
+
+/* Post preview (cards) */
+.post-preview {
+  background-color: var(--c-bg-card) !important;
+  border: 1px solid var(--c-border) !important;
+  border-radius: 8px;
+  padding: 1.5em;
+  margin: 1.5em 0;
+  box-shadow: 0 1px 3px var(--c-shadow);
+}
+.post-preview a { color: var(--c-fg) !important; }
+.post-preview a:hover { color: var(--c-brand) !important; }
+.post-preview .post-meta { color: var(--c-fg-soft) !important; }
+
+/* Sidebar */
+.sidebar, .sidebar-item {
+  background: transparent !important;
+  color: var(--c-fg) !important;
+}
+
+/* Tags page */
+.tag-cloud-bg, .tagcloud {
+  background: var(--c-bg-soft) !important;
+}
+/* #tag_cloud a colors are handled in ui-enhance.css (must beat any !important
+ * that may follow it) so we intentionally don't restate them here. */
+
+/* Archive */
+.archive-year { color: var(--c-fg) !important; border-bottom-color: var(--c-brand) !important; }
+.archive-list li { border-bottom-color: var(--c-border) !important; }
+.archive-list time, .archive-list a { color: var(--c-fg-soft) !important; }
+.archive-list a:hover { color: var(--c-brand) !important; }
+
+/* Search */
+#search-input { background: var(--c-bg-card) !important; color: var(--c-fg) !important; border-color: var(--c-border) !important; }
+.search-results li { border-bottom-color: var(--c-border) !important; }
+.search-results h3 a { color: var(--c-fg) !important; }
+.search-results h3 a:hover { color: var(--c-brand) !important; }
+.search-results mark { background: #4ec0c8; color: #1a1d21; }
+
+/* UI enhancement components (progress / back-to-top / code) */
+.reading-progress { background: var(--c-brand) !important; }
+.back-to-top { background: var(--c-brand) !important; color: var(--c-selection-fg) !important; }
+.code-lang { color: var(--c-fg-soft) !important; background: var(--c-bg-soft) !important; }
+.code-copy { color: var(--c-fg-soft) !important; background: var(--c-bg-card) !important; border-color: var(--c-border) !important; }
+.code-copy:hover { color: var(--c-brand) !important; border-color: var(--c-brand) !important; }
+.code-block pre { background: var(--c-code-bg) !important; }
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  right: 24px;
+  top: 80px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--c-border);
+  border-radius: 50%;
+  background: var(--c-bg-card);
+  color: var(--c-fg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  box-shadow: 0 2px 6px var(--c-shadow);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.theme-toggle:hover { transform: scale(1.05); }
+.theme-toggle svg { width: 20px; height: 20px; }
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* Scrollbar (WebKit) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--c-bg-soft); }
+::-webkit-scrollbar-thumb { background: var(--c-border-strong); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--c-fg-mute); }
+
+/* Page-fullscreen (404/offline) keeps background */
+body.page-fullscreen { background: var(--c-bg) !important; }

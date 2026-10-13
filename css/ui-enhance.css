@@ -1,0 +1,240 @@
+/* ui-enhance.css — reading progress, back-to-top, code enhancements, nav active */
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: #0085A1;
+  z-index: 9999;
+  transition: width 80ms linear;
+  pointer-events: none;
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 133, 161, 0.9);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s, transform 0.2s, background 0.2s;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: #0085A1;
+}
+@media (max-width: 480px) {
+  .back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Code block wrapper */
+.code-block {
+  position: relative;
+  margin: 1.25em 0;
+}
+.code-block pre {
+  margin: 0;
+}
+.code-lang {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  font-size: 11px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6a737d;
+  background: rgba(27, 31, 35, 0.08);
+  padding: 2px 8px;
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 1;
+}
+.code-copy {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #6a737d;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 3px;
+  padding: 2px 8px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, border-color 0.15s;
+  z-index: 1;
+}
+.code-block:hover .code-copy,
+.code-copy:focus {
+  opacity: 1;
+}
+.code-copy:hover {
+  color: #0085A1;
+  border-color: #0085A1;
+}
+.code-copy.copied {
+  color: #28a745;
+  border-color: #28a745;
+  opacity: 1;
+}
+.code-copy.failed {
+  color: #d73a49;
+  border-color: #d73a49;
+  opacity: 1;
+}
+
+/* Nav active highlight */
+#huxblog_navbar .nav.navbar-nav > li.active > a {
+  color: #0085A1 !important;
+}
+#huxblog_navbar .nav.navbar-nav > li > a.active {
+  color: #0085A1 !important;
+}
+
+/* Tags page (#tag_cloud): jquery.tagcloud.js assigns random inline
+ * background colors (#bbbbee → #0085a1) and leaves text color as the
+ * Bootstrap link blue (#337ab7), producing poor contrast on every
+ * shade. Normalize: white text on a single brand background, regardless
+ * of post count. */
+#tag_cloud {
+  padding: 4px 0 12px;
+  margin-bottom: 18px;
+}
+#tag_cloud a {
+  display: inline-block !important;
+  background-color: #0085A1 !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 999em;
+  padding: 4px 12px !important;
+  margin: 0 4px 6px 0 !important;
+  line-height: 1.5 !important;
+  font-size: 13px !important;
+  text-decoration: none !important;
+  transition: background-color 0.18s, transform 0.18s;
+}
+#tag_cloud a:hover,
+#tag_cloud a:focus {
+  background-color: #006a85 !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+[data-theme="dark"] #tag_cloud a {
+  background-color: #4ec0c8 !important;
+  color: #1a1d21 !important;
+}
+[data-theme="dark"] #tag_cloud a:hover,
+[data-theme="dark"] #tag_cloud a:focus {
+  background-color: #6fd6dd !important;
+  color: #1a1d21 !important;
+}
+/* Tag-heading section anchor used by tag links */
+.listing-seperator .tag-text,
+.listing-seperator {
+  color: var(--c-brand, #0085A1) !important;
+  font-weight: 600;
+  margin: 0 0 12px;
+  display: inline-block;
+}
+.listing-seperator {
+  border-bottom: 2px solid var(--c-brand, #0085A1);
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
+
+/* Font Awesome 4 → 6 compatibility shim.
+ * Legacy markup uses `class="fa fa-github"` etc. FA 6 requires the
+ * `fa-brands` family to render brand icons. Map every brand icon class
+ * to the correct font-family so we don't have to edit 27+ markup sites. */
+.fa.fa-github,
+.fa.fa-github-alt,
+.fa.fa-twitter,
+.fa.fa-twitter-square,
+.fa.fa-facebook,
+.fa.fa-facebook-f,
+.fa.fa-facebook-square,
+.fa.fa-linkedin,
+.fa.fa-linkedin-in,
+.fa.fa-linkedin-square,
+.fa.fa-weibo,
+.fa.fa-weixin,
+.fa.fa-weixin-qq,
+.fa.fa-qq,
+.fa.fa-bilibili,
+.fa.fa-juejin,
+.fa.fa-zhihu,
+.fa.fa-stack-overflow,
+.fa.fa-medium,
+.fa.fa-codepen,
+.fa.fa-gitlab,
+.fa.fa-bitbucket,
+.fa.fa-youtube,
+.fa.fa-youtube-square,
+.fa.fa-instagram,
+.fa.fa-google,
+.fa.fa-google-plus,
+.fa.fa-pinterest,
+.fa.fa-pinterest-square,
+.fa.fa-tumblr,
+.fa.fa-tumblr-square,
+.fa.fa-reddit,
+.fa.fa-reddit-square,
+.fa.fa-vimeo,
+.fa.fa-vimeo-square,
+.fa.fa-dribbble,
+.fa.fa-behance,
+.fa.fa-behance-square,
+.fa.fa-skype,
+.fa.fa-snapchat,
+.fa.fa-snapchat-square,
+.fa.fa-whatsapp,
+.fa.fa-telegram,
+.fa.fa-discord,
+.fa.fa-slack,
+.fa.fa-twitch,
+.fa.fa-spotify,
+.fa.fa-apple,
+.fa.fa-android,
+.fa.fa-windows,
+.fa.fa-linux,
+.fa.fa-css3-alt,
+.fa.fa-html5,
+.fa.fa-js,
+.fa.fa-node-js,
+.fa.fa-react,
+.fa.fa-vuejs,
+.fa.fa-angular,
+.fa.fa-bootstrap,
+.fa.fa-font-awesome,
+.fa.fa-google-drive,
+.fa.fa-dropbox,
+.fa.fa-wordpress,
+.fa.fa-medium-m {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+}

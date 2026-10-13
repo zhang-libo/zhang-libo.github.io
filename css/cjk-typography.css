@@ -1,0 +1,64 @@
+/* cjk-typography.css — CJK-friendly typography overrides
+ * Loaded after hux-blog.min.css; uses !important to win over the cascade.
+ */
+
+/* Body: balanced font-size / line-height for Chinese long-form reading */
+body {
+  font-size: 17px !important;
+  line-height: 1.75 !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Article layout fix: when an <article> has overflow-x: hidden AND its
+ * parent (body) also has overflow-x: hidden, some browsers (Chrome ≥80)
+ * compute the article's auto width as fit-content instead of stretching
+ * to fill the parent. Pin it to 100% so the Bootstrap container inside
+ * centers correctly on desktop. */
+article {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+@media (min-width: 768px) {
+  body { font-size: 18px; }
+}
+@media (min-width: 1200px) {
+  body { font-size: 19px; }
+}
+
+/* Paragraph: slightly tighter vertical rhythm for Chinese (still comfortable) */
+p { margin: 1.2em 0 !important; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.3 !important; margin-top: 1.6em; margin-bottom: 0.5em; }
+
+/* Force long URLs in posts to break (without breaking short words inside paragraphs) */
+.post-container a,
+.post-content a {
+  word-break: break-all;
+}
+.post-container p,
+.post-content p {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* Better inline-code rendering */
+code, kbd, samp, pre {
+  font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, "Liberation Mono", Menlo, monospace !important;
+  font-size: 0.92em;
+}
+:not(pre) > code {
+  padding: 1px 6px;
+  background: rgba(135, 131, 120, 0.15);
+  border-radius: 3px;
+  color: #eb5757;
+}
+
+/* Tables: avoid breaking layout on small screens */
+table { display: block; overflow-x: auto; max-width: 100%; }
+
+/* Tighter lists */
+ul, ol { padding-left: 1.6em; }
+li { margin: 0.3em 0; }
