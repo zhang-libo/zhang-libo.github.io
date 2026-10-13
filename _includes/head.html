@@ -15,7 +15,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
 
-    <!-- Safari Webpage Icon    by-BY -->
+    <!-- Safari Webpage Icon -->
     <link rel="apple-touch-icon" href="{{ site.baseurl }}/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
@@ -30,10 +30,29 @@
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl }}">
 
-    <!-- Custom Fonts -->
-    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- UI enhancements (progress bar, back-to-top, code copy, nav active) -->
+    <link rel="stylesheet" href="{{ "/css/ui-enhance.css" | prepend: site.baseurl }}">
+
+    <!-- Hero header slim + dark mask -->
+    <link rel="stylesheet" href="{{ "/css/hero-overrides.css" | prepend: site.baseurl }}">
+
+    <!-- CJK typography overrides -->
+    <link rel="stylesheet" href="{{ "/css/cjk-typography.css" | prepend: site.baseurl }}">
+
+    <!-- Post preview cards -->
+    <link rel="stylesheet" href="{{ "/css/post-card.css" | prepend: site.baseurl }}">
+
+    <!-- Dark mode (must come after other styles for proper override) -->
+    <link rel="stylesheet" href="{{ "/css/dark-mode.css" | prepend: site.baseurl }}">
+
+    <!-- Page-specific styles -->
+    <link rel="stylesheet" href="{{ "/css/archive.css" | prepend: site.baseurl }}">
+
+    <!-- Custom Fonts: Font Awesome 6 (async loaded, does not block render) -->
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
 
     <!-- Hux Delete, sad but pending in China
@@ -49,6 +68,26 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- RSS feed -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS Feed" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
+
+    <!-- jekyll-seo-tag: Open Graph / Twitter Card / JSON-LD -->
+    {%- seo -%}
+
+    <!-- Theme init (run before paint to avoid FOUC) -->
+    <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('zhanglibo-theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch(e) {}
+    })();
+    </script>
 
     <!-- ga & ba script hoook -->
     <script></script>

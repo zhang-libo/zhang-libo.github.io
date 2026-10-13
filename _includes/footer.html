@@ -14,7 +14,7 @@
                         </a>
                     </li>
                     {% endif %}
-                    <!-- add jianshu add target = "_blank" to <a> by BY -->
+                    <!-- jianshu: open in new tab -->
                     {% if site.jianshu_username %}
                             <li>
                                 <a target="_blank" href="https://www.jianshu.com/u/{{ site.jianshu_username }}">
@@ -114,6 +114,14 @@
 <!-- Custom Theme JavaScript -->
 <script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>
 
+<!-- Reading experience enhancements -->
+<script src="{{ "/js/scroll-ui.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/code-enhance.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/nav-active.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/img-lazy.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/theme-toggle.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/tagcloud-fix.js" | prepend: site.baseurl }}"></script>
+
 <!-- Service Worker -->
 {% if site.service-worker %}
 <script type="text/javascript">
@@ -148,15 +156,7 @@
 
      - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
      - https://help.github.com/articles/creating-and-highlighting-code-blocks/ 
-     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers   
--->
-<!--
-    <script>
-        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
-            hljs.initHighlightingOnLoad();
-        })
-    </script>
-    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
 -->
 
 

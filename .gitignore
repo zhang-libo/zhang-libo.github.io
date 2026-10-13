@@ -33,3 +33,18 @@ Temporary Items
 
 # debug file
 _site
+
+# Bundler / Ruby gems (installed locally; never commit)
+/.bundle/
+/vendor/
+
+# Claude desktop app per-project state (launch.json, settings.local.json)
+/.claude/
+
+# OS / editor cruft
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

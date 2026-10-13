@@ -1,0 +1,82 @@
+/* hero-overrides.css — slim down hero header + add dark mask
+ * Override Hux's tall hero so it doesn't dominate the page.
+ *
+ * Key idea: in LIGHT mode the head image is a bright photo, so the dark
+ * mask must be strong enough to push the background back AND we add a
+ * text-shadow on hero text as a belt-and-suspenders safety net.
+ */
+
+.intro-header {
+  /* Override the unconditional `position: fixed; width: 100%; height: 100%`
+   * that hux-blog.min.css mistakenly applies to every .intro-header.
+   * Only 404/offline pages should use fixed positioning (via the
+   * body.page-fullscreen prefix, which the minifier stripped). */
+  position: relative !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 220px !important;
+  max-height: 38vh !important;
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+/* Restore fixed positioning for true fullscreen pages */
+body.page-fullscreen .intro-header {
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  min-height: 0 !important;
+}
+.intro-header .site-heading,
+.intro-header .post-heading,
+.intro-header .page-heading {
+  padding: 60px 0 40px !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 0, 0, 0.35);
+}
+@media (min-width: 768px) {
+  .intro-header {
+    min-height: 280px !important;
+    max-height: 36vh !important;
+  }
+  .intro-header .site-heading,
+  .intro-header .post-heading,
+  .intro-header .page-heading {
+    padding: 80px 0 60px !important;
+  }
+}
+.intro-header .site-heading h1,
+.intro-header .page-heading h1 {
+  font-size: 36px !important;
+  color: #fff !important;
+}
+@media (min-width: 768px) {
+  .intro-header .site-heading h1,
+  .intro-header .page-heading h1 {
+    font-size: 52px !important;
+  }
+}
+.intro-header .post-heading h1 {
+  font-size: 26px !important;
+  color: #fff !important;
+}
+@media (min-width: 768px) {
+  .intro-header .post-heading h1 {
+    font-size: 40px !important;
+  }
+}
+.intro-header .subheading,
+.intro-header .meta,
+.intro-header .intro-header .subheading,
+.intro-header .intro-header .meta {
+  font-size: 15px !important;
+  margin-top: 8px !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+.intro-header .meta a { color: #fff !important; }
+
+/* Tag page and 404/offline pages keep their larger feel */
+.intro-header.tag-bg,
+.intro-header.fullscreen-404 {
+  max-height: 50vh !important;
+  min-height: 300px !important;
+}

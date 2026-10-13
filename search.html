@@ -1,0 +1,97 @@
+---
+layout: page
+title: Search
+description: "站内搜索 - 张立博的博客"
+header-img: "img/post-bg-desk.jpg"
+---
+
+<div class="search-page">
+    <input type="search" id="search-input" placeholder="输入关键词搜索文章…" autocomplete="off" autofocus>
+    <p class="search-hint" id="search-hint">输入 2 个以上字符开始搜索</p>
+    <ul class="search-results" id="search-results"></ul>
+</div>
+
+<style>
+.search-page { max-width: 720px; margin: 0 auto; }
+#search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    font-size: 17px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+#search-input:focus { border-color: #0085A1; }
+.search-hint { color: #999; font-size: 14px; margin: 0.8em 0; }
+.search-results { list-style: none; padding: 0; margin: 0; }
+.search-results li {
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+.search-results h3 { margin: 0 0 4px; font-size: 18px; font-weight: 600; }
+.search-results h3 a { color: #404040; text-decoration: none; }
+.search-results h3 a:hover { color: #0085A1; }
+.search-results .meta { color: #999; font-size: 13px; margin-bottom: 4px; }
+.search-results .excerpt { color: #666; font-size: 14px; line-height: 1.6; }
+.search-results mark { background: #fff3a0; padding: 0 2px; border-radius: 2px; }
+</style>
+
+<script>
+(function () {
+    'use strict';
+    var input = document.getElementById('search-input');
+    var hint = document.getElementById('search-hint');
+    var list = document.getElementById('search-results');
+    var idx = [];
+
+    function escapeHtml(s) {
+        return s.replace(/[&<>"']/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+    }
+    function escapeReg(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+    function highlight(text, q) {
+        if (!q) return escapeHtml(text);
+        var re = new RegExp('(' + escapeReg(q) + ')', 'gi');
+        return escapeHtml(text).replace(re, '<mark>$1</mark>');
+    }
+
+    function render(query) {
+        var q = (query || '').trim().toLowerCase();
+        if (q.length < 2) {
+            list.innerHTML = '';
+            hint.textContent = '输入 2 个以上字符开始搜索';
+            return;
+        }
+        var hits = idx.filter(function (item) {
+            return (item.title && item.title.toLowerCase().indexOf(q) > -1) ||
+                   (item.excerpt && item.excerpt.toLowerCase().indexOf(q) > -1) ||
+                   (item.tags && item.tags.join(' ').toLowerCase().indexOf(q) > -1);
+        });
+        hint.textContent = '共 ' + hits.length + ' 条结果';
+        if (!hits.length) {
+            list.innerHTML = '<li><p class="excerpt">没有匹配的文章。</p></li>';
+            return;
+        }
+        list.innerHTML = hits.map(function (item) {
+            return '<li>' +
+                '<h3><a href="' + escapeHtml(item.url) + '">' + highlight(item.title || '', q) + '</a></h3>' +
+                '<div class="meta">' + escapeHtml(item.date) +
+                (item.tags && item.tags.length ? ' · ' + item.tags.map(function (t) { return '#' + escapeHtml(t); }).join(' ') : '') +
+                '</div>' +
+                '<div class="excerpt">' + highlight(item.excerpt || '', q) + '</div>' +
+                '</li>';
+        }).join('');
+    }
+
+    fetch('{{ "/search.json" | prepend: site.baseurl }}')
+        .then(function (r) { return r.json(); })
+        .then(function (data) { idx = data; })
+        .catch(function (err) { hint.textContent = '搜索索引加载失败：' + err.message; });
+
+    input.addEventListener('input', function (e) { render(e.target.value); });
+})();
+</script>

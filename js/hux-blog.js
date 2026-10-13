@@ -7,7 +7,8 @@
  /*!
  * Hux Blog v1.6.0 (http://startbootstrap.com)
  * Copyright 2016 @huxpro
- * Licensed under Apache 2.0 
+ * Licensed under Apache 2.0
+ * Modified by Zhang.Libo for zhang-libo.github.io
  */
 
 // Tooltip Init

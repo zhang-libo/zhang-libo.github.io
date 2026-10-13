@@ -8,6 +8,12 @@ keyword: "Blog, 张立博的博客, zhang-libo, 张立博, java, linux, flutter"
 url: "https://zhang-libo.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/zhang-libo/zhang-libo.github.io.git" # you code repository
+logo: /img/post-bg-desk.jpg                  # default OG/Twitter card image (absolute or site-root path)
+lang: zh-CN                                  # site language for jekyll-seo-tag
+locale: zh_CN
+twitter:
+  username: zhanglibo610
+  card: summary_large_image
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -32,14 +38,18 @@ jianshu_username:   06d068191419
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
 paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","vendor","Gemfile","Gemfile.lock"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
 
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-gems: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
 
 
 

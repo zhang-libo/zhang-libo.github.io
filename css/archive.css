@@ -1,0 +1,36 @@
+/* archive.css — Archive page styles */
+.archive-year {
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid #0085A1;
+  font-size: 1.6em;
+  color: #404040;
+}
+.archive-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5em 0 1.5em;
+}
+.archive-list li {
+  display: flex;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px dashed #eee;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.archive-list time {
+  flex: 0 0 80px;
+  color: #999;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 14px;
+}
+.archive-list a {
+  color: #404040;
+  text-decoration: none;
+  flex: 1;
+}
+.archive-list a:hover {
+  color: #0085A1;
+}

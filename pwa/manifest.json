@@ -1,19 +1,26 @@
 {
-  "name": "BY Blog",
-  "short_name": "BY Blog",
-  "description": "A personal blog by engineer",
-  "icons": [{
-    "src": "icons/pwa_icon_128.png",
-    "sizes": "128x128",
-    "type": "image/png"
-  }, {
-    "src": "icons/pwa_icon_512.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }],
-  "background_color": "#fff",
-  "theme_color": "#000",
+  "name": "张立博的博客",
+  "short_name": "Zhang.Libo",
+  "description": "张立博的博客，记录技术学习与思考。",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icons/pwa_icon_128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/pwa_icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "background_color": "#ffffff",
+  "theme_color": "#0085A1",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait"
 }
